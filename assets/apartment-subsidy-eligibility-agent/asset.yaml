@@ -1,0 +1,57 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: agent
+
+metadata:
+  name: apartment-subsidy-eligibility-agent
+  version: "1.0.0"
+
+agentCard:
+  name: Apartment Subsidy Eligibility Agent
+  version: "1.0.0"
+  description: >
+    AI agent that validates applicant documents (identity, income, residency),
+    applies country-specific legal eligibility rules, and produces a structured
+    subsidy eligibility recommendation with an audit trail.
+  capabilities:
+    skills:
+      - name: document-validation
+        description: Extracts and validates fields from identity, income, and residency documents.
+      - name: eligibility-rules
+        description: Applies country-specific legal rules to determine subsidy eligibility.
+  streaming:
+    enabled: true
+
+provides:
+  apis:
+    - name: apartment-subsidy-eligibility-agent
+      kind: a2a
+      ordId: customer.build:apiResource:apartment-subsidy-eligibility-fba4d.apartment-subsidy-eligibility-agent:v1
+
+container:
+  buildPath: .
+  port: 5000
+
+requires:
+  - name: sap-s4-legal-document-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:apartment-subsidy-eligibility-fba4d.sap-s4-legal-document-mcp-server:v1
+
+probes:
+  startup:
+    path: /.well-known/agent.json
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 18
+  liveness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3

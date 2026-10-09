@@ -1,0 +1,131 @@
+{
+  "servers": {
+    "sap-s4-legal-document": {
+      "mcp_server_name": "sap.mcp/sap_self",
+      "description": "MCP server for SAP S/4HANA Legal Document API (CE_LEGAL_DOCUMENT_0001)",
+      "tools": {
+        "get_metadata_sap_self": {
+          "description": "Get metadata of the OData service.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "metadata": "<edmx:Edmx Version=\"4.0\">...Legal Document Schema...</edmx:Edmx>"
+          }
+        },
+        "list_legaldocument_for_sap_self": {
+          "description": "Retrieve a list of entities from the LegalDocument collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": { "type": "string", "description": "OData $filter expression" },
+              "select": { "type": "string", "description": "OData $select fields" },
+              "top": { "type": "integer", "description": "Maximum number of results" },
+              "skip": { "type": "integer", "description": "Number of results to skip" }
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "LglCntntMDocumentUUID": "550e8400-e29b-41d4-a716-446655440000",
+                "LglCntntMDocument": "DOC-001",
+                "DocumentDescription": "Tenancy Agreement 2024",
+                "LegalTransaction": "RE-001",
+                "LglCntntMDocContentType": "AGRM",
+                "LglCntntMLanguage": "DE",
+                "InternalDocumentStatus": "01",
+                "LglCntntMDocEffectiveFromDate": "2024-01-01",
+                "LglCntntMDocEffectiveToDate": "2025-12-31",
+                "LglCntntMCreatedUTCDateTime": "/Date(1704067200000)/",
+                "LglCntntMChangedUTCDateTime": "/Date(1704067200000)/"
+              },
+              {
+                "LglCntntMDocumentUUID": "550e8400-e29b-41d4-a716-446655440001",
+                "LglCntntMDocument": "DOC-002",
+                "DocumentDescription": "Subsidy Application 2024",
+                "LegalTransaction": "RE-002",
+                "LglCntntMDocContentType": "APPL",
+                "LglCntntMLanguage": "DE",
+                "InternalDocumentStatus": "02",
+                "LglCntntMDocEffectiveFromDate": "2024-06-01",
+                "LglCntntMDocEffectiveToDate": "2025-05-31",
+                "LglCntntMCreatedUTCDateTime": "/Date(1717200000000)/",
+                "LglCntntMChangedUTCDateTime": "/Date(1717200000000)/"
+              }
+            ]
+          }
+        },
+        "get_legaldocument_for_sap_self": {
+          "description": "Retrieve a single LegalDocument entity by UUID.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "lglcntntmdocumentuuid": { "type": "string", "description": "Document UUID key" },
+              "select": { "type": "string", "description": "OData $select fields" }
+            },
+            "required": ["lglcntntmdocumentuuid"]
+          },
+          "mock_response": {
+            "LglCntntMDocumentUUID": "550e8400-e29b-41d4-a716-446655440000",
+            "LglCntntMDocument": "DOC-001",
+            "DocumentDescription": "Tenancy Agreement 2024",
+            "LegalTransaction": "RE-001",
+            "LglCntntMDocContentType": "AGRM",
+            "LglCntntMLanguage": "DE",
+            "InternalDocumentStatus": "01",
+            "LglCntntMDocEffectiveFromDate": "2024-01-01",
+            "LglCntntMDocEffectiveToDate": "2025-12-31",
+            "LglCntntMCreatedUTCDateTime": "/Date(1704067200000)/",
+            "LglCntntMChangedUTCDateTime": "/Date(1704067200000)/"
+          }
+        },
+        "create_legaldocument_for_sap_self": {
+          "description": "Create a new LegalDocument entity.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "legaltransaction": { "type": "string", "description": "Legal Transaction ID" },
+              "lglcntntmdoccontenttype": { "type": "string", "description": "Content Type" },
+              "lglcntntmlanguage": { "type": "string", "description": "Language key" },
+              "documentdescription": { "type": "string", "description": "Document Name" },
+              "legaldocumentsource": { "type": "string", "description": "Document Source" }
+            },
+            "required": ["legaltransaction", "lglcntntmdoccontenttype", "lglcntntmlanguage", "legaldocumentsource"]
+          },
+          "mock_response": {
+            "LglCntntMDocumentUUID": "660e8400-e29b-41d4-a716-446655440099",
+            "LglCntntMDocument": "DOC-003",
+            "DocumentDescription": "New Document",
+            "InternalDocumentStatus": "01"
+          }
+        },
+        "count_legaldocument_for_sap_self": {
+          "description": "Get count of LegalDocument entities.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": { "type": "string", "description": "OData $filter" }
+            },
+            "required": []
+          },
+          "mock_response": {
+            "count": 42
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_for_agent": "apartment-subsidy-eligibility-agent",
+    "mock_mode": true,
+    "deterministic": true,
+    "total_servers": 1,
+    "total_tools": 5,
+    "generated_from": ["translation.json"],
+    "generation_date": "2026-09-21"
+  }
+}

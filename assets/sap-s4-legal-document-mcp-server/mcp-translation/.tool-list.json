@@ -1,0 +1,7 @@
+[
+  { "name": "get_metadata_sap_self", "title": "get_metadata_sap_self", "description": "Get metadata of the OData service." },
+  { "name": "list_legaldocument_for_sap_self", "title": "list_LegalDocument_for_sap_self", "description": "Retrieve a list of LegalDocument entities." },
+  { "name": "get_legaldocument_for_sap_self", "title": "get_LegalDocument_for_sap_self", "description": "Retrieve a single LegalDocument entity by UUID key." },
+  { "name": "create_legaldocument_for_sap_self", "title": "create_LegalDocument_for_sap_self", "description": "Create a new LegalDocument entity." },
+  { "name": "count_legaldocument_for_sap_self", "title": "count_LegalDocument_for_sap_self", "description": "Get the total count of LegalDocument entities." }
+]

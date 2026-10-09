@@ -1,0 +1,11 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: apartment-subsidy-eligibility-fba4d
+  version: "1.0.0"
+  description: "AI agent that checks a person's profile based on documents for apartment access and subsidy eligibility, aligned with country-specific legal requirements."
+
+assets:
+  - ref: ./assets/apartment-subsidy-eligibility-agent/asset.yaml
+  - ref: ./assets/sap-s4-legal-document-mcp-server/asset.yaml

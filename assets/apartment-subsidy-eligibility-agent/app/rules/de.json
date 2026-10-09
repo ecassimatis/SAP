@@ -1,0 +1,53 @@
+{
+  "country_code": "de",
+  "program_code": "social_housing",
+  "program_name": "Social Housing Subsidy (Wohngeld)",
+  "rules": [
+    {
+      "rule_id": "income_threshold",
+      "description": "Net monthly income must not exceed the threshold",
+      "legal_reference": "WoGG §13",
+      "mandatory": true,
+      "type": "income",
+      "max_income": 2000,
+      "currency": "EUR",
+      "household_adjustments": [
+        { "members": 2, "additional_allowance": 480 },
+        { "members": 3, "additional_allowance": 960 },
+        { "members": 4, "additional_allowance": 1440 }
+      ]
+    },
+    {
+      "rule_id": "residency_duration",
+      "description": "Applicant must have resided in Germany for at least 6 months",
+      "legal_reference": "WoGG §3",
+      "mandatory": true,
+      "type": "residency",
+      "min_months": 6
+    },
+    {
+      "rule_id": "citizenship",
+      "description": "Applicant must be a German citizen or hold a valid residence permit (Aufenthaltstitel)",
+      "legal_reference": "WoGG §3 Abs. 2",
+      "mandatory": true,
+      "type": "citizenship",
+      "allowed_nationalities": ["DE"],
+      "permit_accepted": true
+    },
+    {
+      "rule_id": "document_validity",
+      "description": "All submitted documents must be valid, not expired, and readable",
+      "legal_reference": "Internal compliance requirement",
+      "mandatory": true,
+      "type": "document_check"
+    },
+    {
+      "rule_id": "age_range",
+      "description": "Applicant must be at least 18 years old",
+      "legal_reference": "BGB §2",
+      "mandatory": true,
+      "type": "age",
+      "min_age": 18
+    }
+  ]
+}

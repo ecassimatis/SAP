@@ -1,0 +1,81 @@
+{
+  "mcpTranslationVersion": "0.6",
+  "target": {
+    "ordId": "sap.s4:apiResource:CE_LEGAL_DOCUMENT_0001:v1",
+    "type": "edmx"
+  },
+  "serverInfo": {
+    "name": "sap.mcp/sap_self",
+    "title": "sap_self",
+    "version": "1.0.0",
+    "description": "MCP server for the sap_self service."
+  },
+  "tools": [
+    {
+      "name": "get_metadata_sap_self",
+      "title": "get_metadata_sap_self",
+      "description": "Get metadata of the OData service with optional filtering to reduce token consumption.",
+      "odataType": { "metadataRequest": {} }
+    },
+    {
+      "name": "list_legaldocument_for_sap_self",
+      "title": "list_LegalDocument_for_sap_self",
+      "description": "Retrieve a list of entities from the LegalDocument collection in the sap_self service.",
+      "odataType": {
+        "entitySet": {
+          "name": "LegalDocument",
+          "crudOperation": "read",
+          "parameters": [
+            { "name": "filter" }, { "name": "select" }, { "name": "orderby" },
+            { "name": "top" }, { "name": "skip" }, { "name": "expand" }, { "name": "count" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "get_legaldocument_for_sap_self",
+      "title": "get_LegalDocument_for_sap_self",
+      "description": "Retrieve a single LegalDocument entity by its UUID key.",
+      "odataType": {
+        "entitySet": {
+          "name": "LegalDocument",
+          "crudOperation": "readByKey",
+          "parameters": [
+            { "name": "LglCntntMDocumentUUID", "newParameterName": "lglcntntmdocumentuuid" },
+            { "name": "select" }, { "name": "expand" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "create_legaldocument_for_sap_self",
+      "title": "create_LegalDocument_for_sap_self",
+      "description": "Create a new LegalDocument entity in the sap_self service.",
+      "odataType": {
+        "entitySet": {
+          "name": "LegalDocument",
+          "crudOperation": "create",
+          "parameters": [
+            { "name": "LegalTransaction", "newParameterName": "legaltransaction" },
+            { "name": "LglCntntMDocContentType", "newParameterName": "lglcntntmdoccontenttype" },
+            { "name": "LglCntntMLanguage", "newParameterName": "lglcntntmlanguage" },
+            { "name": "DocumentDescription", "newParameterName": "documentdescription" },
+            { "name": "LegalDocumentSource", "newParameterName": "legaldocumentsource" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "count_legaldocument_for_sap_self",
+      "title": "count_LegalDocument_for_sap_self",
+      "description": "Get the total count of LegalDocument entities, with optional filter.",
+      "odataType": {
+        "entitySet": {
+          "name": "LegalDocument",
+          "crudOperation": "count",
+          "parameters": [{ "name": "filter" }]
+        }
+      }
+    }
+  ]
+}

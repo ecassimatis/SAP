@@ -1,0 +1,20 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-s4-legal-document-mcp-server
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: CE_LEGAL_DOCUMENT_0001
+    kind: api
+    ordId: sap.s4:apiResource:CE_LEGAL_DOCUMENT_0001:v1
+
+provides:
+  apis:
+    - name: sap-s4-legal-document-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:apartment-subsidy-eligibility-fba4d.sap-s4-legal-document-mcp-server:v1
